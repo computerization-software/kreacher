@@ -33,15 +33,17 @@ module.exports = runtimeParams => {
   execSync(`cd "${projectDir}/code"; npx contentica --init;`);
   execSync(`mv "${projectDir}/code/contenticarc.json" "${projectDir}/code/configs/contenticarc.json"`);
 
-  // copy files
-  execSync(`cp -a "${__dirname}/files/configs/." "${projectDir}/code/configs"`);
-  execSync(`cp -a "${__dirname}/files/scripts/." "${projectDir}/code/scripts"`);
-
   // create project structure
   fs.mkdirSync(`${projectDir}/code/src/blocks`);
   fs.mkdirSync(`${projectDir}/code/templates`);
 
   fs.writeFileSync(`${projectDir}/code/src/index.js`, '');
+
+  // copy files
+  execSync(`cp -a "${__dirname}/files/configs/." "${projectDir}/code/configs"`);
+  execSync(`cp -a "${__dirname}/files/scripts/." "${projectDir}/code/scripts"`);
+  execSync(`cp -a "${__dirname}/files/templates/." "${projectDir}/code/templates"`);
+  execSync(`cp -a "${__dirname}/files/gitignore" "${projectDir}/.gitignore"`);
 
   // add npm scripts
   const packageJSON = JSON.parse(fs.readFileSync(`${projectDir}/code/package.json`, 'utf-8'));
