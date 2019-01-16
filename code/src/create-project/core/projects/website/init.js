@@ -20,7 +20,7 @@ module.exports = runtimeParams => {
   execSync(`cd "${projectDir}/code"; npm i --save-dev contentica;`);
   execSync(`cd "${projectDir}/code"; npm i --save-dev @babel/cli @babel/core @babel/preset-env`);
   execSync(`cd "${projectDir}/code"; npm i --save-dev webpack webpack-cli`);
-  execSync(`cd "${projectDir}/code"; npm i --save-dev babel-loader css-loader`);
+  execSync(`cd "${projectDir}/code"; npm i --save-dev babel-loader css-loader file-loader`);
   execSync(`cd "${projectDir}/code"; npm i --save-dev mini-css-extract-plugin webpack-manifest-plugin`);
   execSync(`cd "${projectDir}/code"; npm i --save-dev jsdom;`);
   execSync(`cd "${projectDir}/code"; npm i --save-dev chokidar;`);
