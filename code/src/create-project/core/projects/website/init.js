@@ -37,6 +37,7 @@ module.exports = runtimeParams => {
   // create project structure
   fs.mkdirSync(`${projectDir}/code/src/blocks`);
   fs.mkdirSync(`${projectDir}/code/templates`);
+  fs.mkdirSync(`${projectDir}/code/static-assets`);
 
   fs.writeFileSync(`${projectDir}/code/src/index.js`, '');
 

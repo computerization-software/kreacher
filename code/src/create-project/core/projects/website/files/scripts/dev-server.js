@@ -15,6 +15,7 @@ const build = () => {
     }
 
     execSync('npx contentica --config configs/contenticarc.json --mock-input;');
+    execSync('cp -a static-assets/. build/assets/');
     linkAssetsInHTML();
 
     console.log('rebuild completed');
