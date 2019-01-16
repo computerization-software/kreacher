@@ -28,6 +28,7 @@ module.exports = runtimeParams => {
   execSync(`cd "${projectDir}/code"; npm i --save-dev fs-extra;`);
   execSync(`cd "${projectDir}/code"; npm i --save-dev fs-readdir-recursive;`);
   execSync(`cd "${projectDir}/code"; npm i --save-dev html-minifier;`);
+  execSync(`cd "${projectDir}/code"; npm i --save-dev http-server;`);
 
   // npm init dependencies
   execSync(`cd "${projectDir}/code"; npx contentica --init;`);
