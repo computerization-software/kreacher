@@ -1,3 +1,3 @@
 # !/bin/bash
 
-PORT=8080 npx react-scripts start;
+npx webpack --config configs/webpack.config.js;

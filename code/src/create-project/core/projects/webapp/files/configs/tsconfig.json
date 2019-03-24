@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "outDir": "./build/",
+    "sourceMap": true,
+    "noImplicitAny": false,
+    "module": "comomnjs",
+    "target": "es5",
+    "jsx": "react",
+    "baseUrl": "../",
+    "paths": {
+      "react/*": ["src/react/*"],
+      "core/*": ["src/core/*"],
+      "static/*": ["src/static/*"]
+    }
+  },
+  "include": [
+    "../src/**/*"
+  ]
+}

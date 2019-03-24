@@ -1,3 +1,3 @@
 # !/bin/bash
 
-npx react-scripts build;
+npx webpack --config configs/webpack.config.js;
