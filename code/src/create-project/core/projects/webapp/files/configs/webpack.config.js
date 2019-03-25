@@ -1,39 +1,38 @@
 const
   TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin'),
-  HtmlWebpackPlugin = require('html-webpack-plugin');
+  HtmlWebpackPlugin   = require('html-webpack-plugin');
+  APP_CONFIG          = require(`${__dirname}/app.${process.env['NODE_ENV'] || 'development'}.config`);
 
-
-const TS_CONFIG_PATH = `${__dirname}/../configs/tsconfig.json`;
- 
 
 module.exports = {
-  mode: 'development',
+  mode: APP_CONFIG['webpack_mode'],
   entry: './src/index.ts',
   output: {
     filename: '[name]-[hash].js',
     path: __dirname + '/../build'
   },
 
-  // Enable sourcemaps for debugging webpack's output.
-  devtool: 'source-map',
+  devtool: APP_CONFIG['webpack_devtool'],
 
   resolve: {
-    // Add '.ts' and '.tsx' as resolvable extensions.
     extensions: ['.ts', '.tsx', '.js', '.json'],
-    plugins: [new TsconfigPathsPlugin({configFile: TS_CONFIG_PATH})]
+    plugins: [new TsconfigPathsPlugin({configFile: APP_CONFIG['typescript_config_path']})]
   },
 
   module: {
     rules: [
-      // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
       {
         test: /\.tsx?$/,
         loader: 'awesome-typescript-loader',
-        options: { configFileName: TS_CONFIG_PATH }
+        options: { configFileName: APP_CONFIG['typescript_config_path'] }
       },
 
       // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' }
+      { enforce: 'pre', test: /\.js$/, loader: 'source-map-loader' },
+      
+      { test: /\.css/, use: [ 'style-loader', 'css-loader' ] },
+
+      { test: /\.(png|svg|jpg|gif)$/, use: [ 'file-loader' ] }
     ]
   },
 
@@ -49,7 +48,9 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: `${__dirname}/../src/static/index.html`,
-      inject: true
+      inject: true,
+
+      ...APP_CONFIG['html_webpack_plugin_options']
     })
   ]
 };

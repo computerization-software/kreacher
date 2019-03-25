@@ -21,11 +21,15 @@ module.exports = runtimeParams => {
         webpack \
         webpack-cli \
         typescript \
-        @types/react @types/react-dom \
+        @types/react @types/react-dom @types/sinon @types/mocha \
         awesome-typescript-loader \
         tsconfig-paths-webpack-plugin \
         html-webpack-plugin \
-        source-map-loader;
+        source-map-loader \
+        css-loader style-loader file-loader \
+        mocha \
+        sinon \
+        ts-node;
     `,
     {stdio: 'inherit'}
   );
@@ -41,6 +45,7 @@ module.exports = runtimeParams => {
   packageJSON.scripts = {
     build: 'NPM_SCRIPT=build ./scripts/npm-script.sh',
     dev: 'NPM_SCRIPT=dev ./scripts/npm-script.sh',
+    test: 'NPM_SCRIPT=test ./scripts/npm-script.sh',
   };
   packageJSON.name = projectName;
   delete packageJSON.main;

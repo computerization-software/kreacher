@@ -1,6 +1,3 @@
-import App from 'react/app';
-
-
 const APP_CONTAINER_ID = 'app';
 
 interface IRenderAppFacade {
