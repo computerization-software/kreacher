@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "outDir": "./build/",
+    "noImplicitAny": false,
+    "module": "node",
+    "target": "es6",
+    "baseUrl": "../",
+    "paths": {
+      "models/*": ["src/models/*"],
+      "views/*": ["src/views/*"],
+      "controllers/*": ["src/controllers/*"],
+      "utils/*": ["src/utils/*"]
+    }
+  },
+  "include": [
+    "../src/**/*"
+  ]
+}
